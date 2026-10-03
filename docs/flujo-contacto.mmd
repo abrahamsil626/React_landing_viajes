@@ -1,0 +1,18 @@
+flowchart TD
+    A([Sección Contacto]) --> B{¿Llegó con<br/>interés previo?}
+    B -- Sí --> C[Precarga destino<br/>y mensaje con fecha y viajeros]
+    B -- No --> D[Formulario vacío]
+    C --> E[Usuario completa los campos]
+    D --> E
+    E --> F[Al salir de un campo:<br/>validateField - blur]
+    F --> E
+    E --> G[Clic en 'Enviar consulta']
+    G --> H[validateContactForm<br/>contactValidators.js]
+    H --> I{¿Datos válidos?}
+    I -- No --> J[Errores bajo cada campo<br/>foco al primer campo inválido]
+    J --> E
+    I -- Sí --> K[estado: sending<br/>botón 'Enviando…' deshabilitado]
+    K --> L[Temporizador de 1,4 s<br/>no se envía ningún dato]
+    L --> M[estado: sent<br/>¡Gracias, nombre!]
+    M --> N[Clic en 'Enviar otra consulta']
+    N --> D

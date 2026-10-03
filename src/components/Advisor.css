@@ -1,0 +1,54 @@
+.advisor { background: var(--soft); }
+
+.advisor__layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+
+.advisor .section-title { max-width: 18ch; }
+.advisor__quote { max-width: 48ch; margin-top: 1.25rem; padding-left: 1.1rem; border-left: 3px solid var(--primary); color: var(--body); font-size: var(--fs-lead); line-height: 1.55; }
+
+.advisor__facts { display: grid; gap: 0; margin-top: 2rem; }
+.advisor__facts li { display: flex; gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--hairline); }
+.advisor__facts li:last-child { border-bottom: 1px solid var(--hairline); }
+.advisor__facts .icon { flex: none; margin-top: 0.15rem; color: var(--ink); }
+.advisor__facts h3 { font-size: 1rem; letter-spacing: -0.01em; }
+.advisor__facts p { margin-top: 0.15rem; color: var(--muted); }
+
+.advisor__card {
+  display: grid;
+  justify-items: center;
+  gap: 0.2rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--r-lg);
+  background: var(--canvas);
+  box-shadow: var(--shadow-lift);
+  text-align: center;
+}
+.advisor__avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 7rem;
+  height: 7rem;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #ff7a59);
+  color: #fff;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.advisor__badge { position: absolute; right: 0; bottom: 0.15rem; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--canvas); color: var(--primary); box-shadow: 0 0 0 3px var(--canvas), var(--shadow); }
+.advisor__name { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.advisor__role { color: var(--muted); font-size: 0.9375rem; }
+
+.advisor__stats { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; margin-block: 1.5rem; }
+.advisor__stats div { padding-inline: 0.5rem; }
+.advisor__stats div + div { border-left: 1px solid var(--hairline); }
+.advisor__stats dd { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.advisor__stats dt { order: 2; margin-top: 0.1rem; color: var(--muted); font-size: 0.75rem; }
+.advisor__stats div { display: flex; flex-direction: column; }
+
+.advisor__cta { width: 100%; }
+
+@media (max-width: 860px) {
+  .advisor__layout { grid-template-columns: 1fr; }
+}

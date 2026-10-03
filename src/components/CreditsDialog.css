@@ -1,0 +1,27 @@
+.credits { width: min(92vw, 34rem); max-height: 86vh; padding: 0; border: 0; border-radius: var(--r-md); background: var(--canvas); color: var(--ink); box-shadow: var(--shadow-lift); }
+.credits::backdrop { background: rgb(0 0 0 / 0.5); }
+.credits[open] { animation: dialog-in 0.35s var(--ease) both; }
+
+.credits__panel { padding: clamp(1.5rem, 4vw, 2.25rem); }
+.credits__title { font-size: 1.5rem; }
+.credits__lead { margin-top: 0.4rem; color: var(--muted); font-size: 0.9375rem; }
+
+.credits__list { display: grid; margin-block: 1.25rem 1.5rem; }
+.credits__list li { display: flex; flex-direction: column; padding-block: 0.7rem; border-top: 1px solid var(--hairline); font-size: 0.9375rem; }
+.credits__list a { font-weight: 600; }
+.credits__list span { color: var(--muted); }
+
+.credits__close {
+  min-height: var(--tap);
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: var(--ink);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease);
+}
+.credits__close:hover { background: #000; }
+
+@keyframes dialog-in { from { opacity: 0; transform: translateY(16px) scale(0.98); } }

@@ -1,0 +1,26 @@
+.to-top {
+  --p: 0;
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 0;
+  border-radius: 50%;
+  /* Anillo de progreso de lectura alrededor del botón */
+  background: radial-gradient(closest-side, var(--canvas) calc(100% - 3px), transparent 0),
+    conic-gradient(var(--primary) calc(var(--p) * 1%), var(--hairline) 0);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+}
+.to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.to-top:active { transform: scale(0.92); }

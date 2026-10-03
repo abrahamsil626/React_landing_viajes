@@ -1,0 +1,46 @@
+/* Tokens derivados de DESIGN.md (Airbnb): lienzo blanco, tinta casi negra, un solo acento (Rausch). */
+:root {
+  --canvas: #ffffff;
+  --soft: #f7f7f7;
+  --strong: #f2f2f2;
+  --hairline: #dddddd;
+  --hairline-soft: #ebebeb;
+  --border-strong: #c1c1c1;
+
+  --ink: #222222;
+  --body: #3f3f3f;
+  --muted: #6a6a6a;
+
+  --primary: #ff385c;
+  --primary-active: #e00b41;
+  --primary-disabled: #ffd1da;
+  --error: #c13515;
+  --success: #1b6a49;
+
+  --font: 'Inter', 'Airbnb Cereal VF', Circular, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-h1: clamp(2.25rem, 5.4vw, 4rem);
+  --fs-h2: clamp(1.65rem, 3.2vw, 2.4rem);
+  --fs-h3: 1.25rem;
+  --fs-lead: clamp(1.0625rem, 1.5vw, 1.25rem);
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 32px;
+  --r-full: 9999px;
+
+  /* Una sola capa de elevación */
+  --shadow: rgb(0 0 0 / 0.02) 0 0 0 1px, rgb(0 0 0 / 0.04) 0 2px 6px, rgb(0 0 0 / 0.1) 0 4px 8px;
+  --shadow-lift: rgb(0 0 0 / 0.04) 0 0 0 1px, rgb(0 0 0 / 0.08) 0 6px 16px, rgb(0 0 0 / 0.14) 0 14px 32px;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --header-h: 80px;
+  --container: 1280px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --tap: 3rem;
+}
+
+@media (max-width: 743px) {
+  :root { --header-h: 68px; }
+}

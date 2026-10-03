@@ -1,0 +1,120 @@
+.planner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr auto;
+  align-items: center;
+  width: min(100%, 56rem);
+  padding: 0.5rem;
+  border-radius: var(--r-full);
+  background: var(--canvas);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--hairline);
+  text-align: left;
+  transition: background-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+/* Al editar, el resto se atenúa y el segmento activo se eleva */
+.planner:focus-within { background: var(--strong); }
+
+.planner__seg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.1rem;
+  min-height: 4rem;
+  padding: 0.55rem 1.5rem;
+  border-radius: var(--r-full);
+  transition: background-color 0.2s var(--ease), box-shadow 0.25s var(--ease);
+}
+.planner__seg + .planner__seg::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 22%;
+  bottom: 22%;
+  width: 1px;
+  background: var(--hairline);
+  transition: opacity 0.2s;
+}
+.planner__seg:hover { background: var(--soft); }
+.planner:focus-within .planner__seg:hover { background: rgb(0 0 0 / 0.04); }
+.planner__seg:focus-within { background: var(--canvas) !important; box-shadow: var(--shadow-lift); z-index: 1; }
+.planner__seg:hover::before,
+.planner__seg:focus-within::before,
+.planner__seg:hover + .planner__seg::before,
+.planner__seg:focus-within + .planner__seg::before { opacity: 0; }
+
+.planner__seg label,
+.planner__label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.01em; color: var(--ink); }
+
+.planner select,
+.planner input[type='date'] {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.9375rem;
+  color: var(--body);
+  outline: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+.planner select { appearance: none; }
+.planner select:focus-visible,
+.planner input:focus-visible { outline: none; }
+.planner__seg--where::after {
+  content: '';
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.stepper { display: inline-flex; align-items: center; gap: 0.7rem; }
+.stepper__btn {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--canvas);
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+  cursor: pointer;
+  transition: box-shadow 0.2s, background-color 0.2s, transform 0.15s var(--ease);
+}
+.stepper__btn:hover:not(:disabled) { box-shadow: inset 0 0 0 1px var(--ink); }
+.stepper__btn:active:not(:disabled) { transform: scale(0.9); }
+.stepper__btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.stepper__btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.stepper__value { min-width: 1.5rem; text-align: center; font-size: 1rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.planner__submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  margin-left: 0.25rem;
+  padding: 0 1.5rem 0 1.25rem;
+  border: 0;
+  border-radius: var(--r-full);
+  background: var(--primary);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s var(--ease);
+}
+.planner__submit:hover { background: #ee2a4f; }
+.planner__submit:active { background: var(--primary-active); transform: scale(0.97); }
+.planner__submit:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: var(--r-full); }
+
+@media (max-width: 860px) {
+  .planner { grid-template-columns: 1fr; padding: 0.4rem; border-radius: var(--r-lg); }
+  .planner__seg { min-height: 3.6rem; padding-inline: 1.1rem; border-radius: var(--r-md); }
+  .planner__seg + .planner__seg::before { left: 1.1rem; right: 1.1rem; top: 0; bottom: auto; width: auto; height: 1px; }
+  .planner__seg--who { flex-direction: row; align-items: center; justify-content: space-between; }
+  .planner__submit { justify-content: center; margin: 0.4rem 0 0; min-height: 3.25rem; border-radius: var(--r-md); }
+}

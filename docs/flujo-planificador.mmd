@@ -1,0 +1,27 @@
+flowchart TD
+    A([Abrir la landing]) --> B[Hero<br/>Hero.jsx]
+    B --> C[Planificador en píldora<br/>TripPlanner.jsx<br/>destino · salida · viajeros]
+    C --> D[Clic en 'Ver mi propuesta'<br/>App.handleSearch]
+    D --> E{¿Hay destino<br/>elegido?}
+    E -- No --> F[Sorpréndeme:<br/>destino al azar<br/>surprise = true]
+    E -- Sí --> G[Usa el destino elegido]
+    F --> H[Estado search<br/>destino · fecha · viajeros]
+    G --> H
+    H --> I[Destinations<br/>resalta la tarjeta y la pone primero]
+    H --> J[Proposal.jsx<br/>ficha de reserva]
+    J --> K[Salida · regreso · total = precio × viajeros<br/>momentos del viaje]
+    K --> L{¿Qué hace<br/>el usuario?}
+    L -- Pedir propuesta --> M[App.handleRequest<br/>interest = destino + nota de viaje]
+    L -- Limpiar búsqueda --> N[App.handleClear<br/>search = null]
+    N --> I
+    M --> O[Scroll a Contacto<br/>ContactForm precarga destino y mensaje]
+
+    B -.-> P[Scroll hacia abajo]
+    P --> Q[Header: el buscador compacto<br/>reemplaza los enlaces]
+    Q --> R[Clic: sube y enfoca<br/>#planner-destino]
+    R --> C
+
+    S([Tarjeta de destino]) --> T[Clic en 'Quiero este viaje'<br/>App.handleSelect]
+    T --> U[interest = destino]
+    U --> O
+    S --> V[Clic en corazón<br/>favorito + contador]
