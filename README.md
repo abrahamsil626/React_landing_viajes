@@ -1,89 +1,79 @@
-# Rumbo · Landing page de viajes
+# Rumbo
 
-Landing de una agencia de viajes ficticia, hecha con React y orientada a la **experiencia de usuario**. Es un proyecto de demostración: todo es frontend, sin backend ni base de datos. El contenido son datos de prueba. El sistema visual sigue el [`DESIGN.md`](DESIGN.md) de Airbnb.
+Landing page de una **agencia de viajes a medida** (ficticia) en React 19 + Vite, orientada a la experiencia de usuario y con una estética inspirada en el sistema de diseño de Airbnb: lienzo blanco, tinta casi negra, un único acento de color, formas en píldora y fotografía como protagonista.
+
+> **Prueba el proyecto en vivo:** [tienda2-agenciaviajes-frontend.netlify.app](https://tienda2-agenciaviajes-frontend.netlify.app)
+
+## Cómo se hizo
+
+1. **Sistema de diseño.** El punto de partida visual es el [`DESIGN.md`](DESIGN.md) de Airbnb, traducido a variables CSS en [`src/styles/tokens.css`](src/styles/tokens.css).
+2. **Especificación.** La landing tiene requisitos y criterios de aceptación en [`specs/landing/`](specs/landing/) (Spec-Driven Development): `spec.md` es la fuente de verdad, `plan.md` recoge las decisiones técnicas y `tasks.md` las tareas.
+3. **Implementación** en React siguiendo esa spec, con al menos una prueba automática por criterio (el nombre de cada prueba incluye su ID, `CA-xx`).
+
+> Las fotografías de los destinos y el video del hero provienen de Wikimedia Commons con licencias libres; los créditos y licencias están en [`src/content/credits.js`](src/content/credits.js).
+
+## Funcionalidad
+
+- Interfaz íntegramente **en español**.
+- **Cabecera** fija que marca la sección activa; al bajar, un buscador compacto sustituye los enlaces y lleva de vuelta al planificador. Menú móvil que se cierra con Escape.
+- **Hero** con el **planificador** en píldora (destino, salida, viajeros) y un marco de video que crece de tarjeta a ancho completo con el scroll, con botón de pausa.
+- **Propuesta preliminar:** buscar arma una ficha con fechas de salida y regreso, total estimado (precio × viajeros) y primeros días, resalta el destino y lo coloca primero. Sin destino, "Sorpréndeme" elige uno y explica por qué.
+- **Destinos** con barra de categorías fija, tarjetas fotográficas y favoritos con contador.
+- **Tu asesor**, **Cómo funciona** (una ruta que se dibuja al entrar en pantalla) y **Opiniones** con una destacada seleccionable.
+- **Formulario de contacto** que recibe destino, fechas y viajeros desde la propuesta, con validación al salir de cada campo, mensaje específico por campo, foco al primer error, contador de caracteres y confirmación de envío.
+- **Footer** con navegación y contacto, y botón de volver arriba con anillo de progreso de lectura.
+- **Accesibilidad:** enlace "Saltar al contenido", etiquetas asociadas, foco visible, `aria-pressed`/`aria-expanded`/`aria-current` y animaciones desactivadas con `prefers-reduced-motion`.
+- Diseño adaptable a móvil, tablet y escritorio, sin scroll horizontal.
+
+> El envío del formulario es **simulado** en el cliente (un temporizador y la confirmación); no hay backend. Destinos, precios, opiniones y personas son ficticios, y favoritos y búsqueda viven solo en memoria.
 
 ## Stack
-- React 19 + Vite (JavaScript)
-- CSS propio con variables (sin librería de componentes)
-- Vitest + React Testing Library
 
-## Requisitos
-Node.js 20 o superior y npm.
+React 19 · JavaScript · Vite · CSS propio con variables (sin librería de componentes) · Vitest + Testing Library.
 
-## Uso
+## Empezar
+
+Requiere Node.js 20 o superior.
+
 ```bash
+git clone https://github.com/abrahamsil626/React_landing_viajes.git
+cd React_landing_viajes
 npm install
 npm run dev        # http://localhost:5173
-npm test           # ejecuta las pruebas
-npm run build      # build de producción en dist/
-npm run preview    # sirve el build
 ```
 
-## Secciones
-1. **Cabecera** fija con sección activa. Al bajar, un buscador compacto sustituye los enlaces y lleva de vuelta al planificador.
-2. **Hero** con el **planificador** en píldora (destino, salida, viajeros) y un marco de video que se expande con el scroll.
-3. **Destinos** con barra de categorías fija, tarjetas fotográficas y favoritos. Tras buscar aparece la **propuesta** como ficha de reserva.
-4. **Tu asesor**, **Cómo funciona** (una ruta que se dibuja al entrar en pantalla) y **Opiniones**.
-5. **Cierre** con foto y llamada a hablar con el asesor.
-6. **Contacto** con validaciones, estados de carga y confirmación; recibe destino, fechas y viajeros desde la propuesta.
-7. **Footer** claro, con botón de volver arriba (con anillo de progreso) y créditos de imágenes.
-
-## Desarrollo guiado por especificación (SDD)
-La especificación en `specs/landing/` es la fuente de verdad. Cada criterio de aceptación (CA-xx) tiene al menos una prueba cuyo nombre incluye su ID. Ante un cambio de comportamiento, se actualiza primero `spec.md`, luego `plan.md` y `tasks.md`, y después el código.
-
-| Archivo | Contenido |
-|---------|-----------|
-| [`specs/landing/spec.md`](specs/landing/spec.md) | Objetivo, alcance, requisitos (RF), criterios (CA) y mejoras de UX |
-| [`specs/landing/plan.md`](specs/landing/plan.md) | Stack, decisiones técnicas y estructura |
-| [`specs/landing/tasks.md`](specs/landing/tasks.md) | Tareas hechas y pendientes |
-
-## Diagramas
-Los flujos están en Mermaid, en `docs/`:
-- [`flujo-planificador.mmd`](docs/flujo-planificador.mmd): del buscador a la propuesta y al formulario.
-- [`flujo-contacto.mmd`](docs/flujo-contacto.mmd): validación, envío simulado y confirmación.
+| Script | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción en `dist/` |
+| `npm run preview` | Sirve localmente el build de producción |
+| `npm test` | Pruebas (criterios de aceptación de la spec) |
+| `npm run test:watch` | Pruebas en modo observación |
 
 ## Estructura
+
 ```
-specs/landing/                spec.md, plan.md, tasks.md
-docs/                         diagramas .mmd
-DESIGN.md                     sistema de diseño de Airbnb
-public/media/                 video del hero
+specs/landing/  Especificación, plan y tareas (spec-driven)
+docs/           Diagramas de flujo en Mermaid (planificador y contacto)
+DESIGN.md       Sistema de diseño de Airbnb
+public/media/   Video del hero
 src/
-  assets/images/              una fotografía por destino
-  content/                    datos de prueba (sitio, destinos, opiniones, créditos)
-  validators/                 validaciones del formulario (funciones puras) y pruebas
-  lib/                        formato de precios y fechas
-  hooks/                      useInView, useActiveSection, useScrolled, usePrefersReducedMotion
-  components/                 un componente y su CSS por sección, más Button, Icon y Reveal
-  styles/                     tokens.css (colores, tipografía, radios, sombra) y global.css
-  App.jsx, main.jsx, App.test.jsx
+  assets/       Una fotografía por destino
+  components/   Un componente y su CSS por sección, más Button, Icon y Reveal
+  content/      Datos de prueba (sitio, destinos, opiniones, créditos)
+  hooks/        useInView, useActiveSection, useScrolled, usePrefersReducedMotion
+  lib/          Formato de precios y fechas
+  styles/       tokens.css y global.css
+  validators/   Validaciones del formulario (funciones puras) y sus pruebas
+  test/         Configuración de las pruebas
 ```
 
-## Decisiones de UX
-- **Planificador real:** buscar arma una propuesta (fechas de salida y regreso, total por viajeros, primeros días), pone el destino primero y lo resalta. "Sorpréndeme" elige un destino y explica por qué.
-- **Formulario cuidado:** validación al salir del campo, mensaje específico por campo, foco automático al primer error, contador de caracteres y confirmación con opción de enviar otra consulta.
-- **Animaciones con criterio:** entrada al hacer scroll, marco del video que crece, ruta que se dibuja y micro-interacciones. Todo se desactiva con `prefers-reduced-motion`.
-- **Accesibilidad:** enlace "saltar al contenido", etiquetas asociadas, `aria-pressed`/`aria-expanded`/`aria-current`, foco visible, menú que cierra con Escape y botón de pausa para el video.
-- **Adaptable:** pensado para móvil, tablet y escritorio, sin scroll horizontal.
+## Sistema de diseño
 
-## Formulario y datos
-Las validaciones viven en `src/validators/contactValidators.js`, no en el JSX ni en atributos HTML.
+Reglas en [`DESIGN.md`](DESIGN.md) y tokens en [`src/styles/tokens.css`](src/styles/tokens.css) (colores, tipografía, radios y sombras como variables CSS).
 
-| Campo | Regla | Mensaje |
-|-------|-------|---------|
-| Nombre | Obligatorio, mínimo 2 caracteres | Cuéntanos tu nombre / El nombre debe tener al menos 2 caracteres |
-| Correo | Obligatorio y con formato válido | Necesitamos tu correo para responderte / Ingresa un correo válido |
-| Destino | Obligatorio | Elige un destino de interés |
-| Mensaje | Opcional, máximo 500 caracteres | El mensaje no puede superar 500 caracteres |
-| Política | Debe aceptarse | Necesitamos tu autorización para responderte |
-
-**El formulario no envía nada:** al validar correctamente simula el envío con un temporizador y muestra la confirmación. Destinos, precios, opiniones y personas son ficticios.
-
-## Fuentes
-`index.html` carga *Inter* desde Google Fonts, como sustituta de Airbnb Cereal VF. Sin conexión, la página usa tipografías del sistema.
-
-## Imágenes y video
-Las fotografías de los destinos y el video del hero provienen de Wikimedia Commons con licencias libres (CC0, dominio público, CC BY y CC BY-SA). Los créditos y enlaces están en `src/content/credits.js` y se muestran en el footer. El video vive en `public/media/`; para cambiarlo, reemplaza el archivo y actualiza `VIDEO_SRC` en `src/components/Hero.jsx` y el crédito.
-
-## Próximos pasos posibles
-Conectar el formulario a un servicio real, detalle de cada destino, internacionalización y fotos reales. Ver `specs/landing/tasks.md`.
+- **Color:** lienzo blanco (`#ffffff`), tinta `#222222` y un solo acento, Rausch (`#ff385c`), reservado para las acciones principales.
+- **Tipografía:** *Inter* desde Google Fonts, como sustituta de Airbnb Cereal VF, con tamaños fluidos (`clamp`). Sin conexión se usan las tipografías del sistema.
+- **Forma:** radios de `8px` a `32px` y píldora para el planificador y los botones.
+- **Profundidad:** una sombra suave como elevación base y una variante más marcada para estados hover y elementos flotantes.
+- **Movimiento:** entradas al hacer scroll y micro-interacciones, todo desactivable con `prefers-reduced-motion`.

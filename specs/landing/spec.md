@@ -4,7 +4,7 @@
 Landing de una agencia de viajes ficticia que lleva al visitante de una idea ("quiero viajar") a una consulta enviada. Una sola acción principal: el **planificador** (destino, salida, viajeros) que arma una propuesta preliminar y la conecta con el formulario de contacto. El sistema visual sigue `DESIGN.md` (Airbnb).
 
 ## Alcance
-- Incluye: cabecera con navegación y buscador compacto, hero con planificador y video, destinos filtrables con favoritos, propuesta preliminar, asesor, cómo funciona, opiniones, cierre, formulario de contacto, footer y créditos.
+- Incluye: cabecera con navegación y buscador compacto, hero con planificador y video, destinos filtrables con favoritos, propuesta preliminar, asesor, cómo funciona, opiniones, cierre, formulario de contacto y footer.
 - Excluye: backend real (el envío es simulado), pagos y reservas, cuentas de usuario, persistencia (favoritos y búsqueda viven en memoria), rutas múltiples, internacionalización.
 
 ## Requisitos funcionales
@@ -19,7 +19,7 @@ Landing de una agencia de viajes ficticia que lleva al visitante de una idea ("q
 | RF-06 | Las validaciones del formulario viven en `validators/contactValidators.js`, no en el JSX ni en atributos HTML (`noValidate`). |
 | RF-07 | El formulario no envía datos: simula el envío con un temporizador y confirma. |
 | RF-08 | Los datos (destinos, precios, opiniones, personas) son ficticios y están en `src/content/`. |
-| RF-09 | Las fotografías y el video provienen de Wikimedia Commons; los créditos son accesibles desde el footer. |
+| RF-09 | Las fotografías y el video provienen de Wikimedia Commons; los créditos y licencias están en `src/content/credits.js`. |
 | RF-10 | Toda la interfaz está en español. |
 | RF-11 | El sistema visual (colores, tipografía, radios, sombra única) sale de `DESIGN.md` y se define como tokens en `styles/tokens.css`. |
 
@@ -39,9 +39,8 @@ Landing de una agencia de viajes ficticia que lleva al visitante de una idea ("q
 - **CA-07** Buscar sin destino ("Sorpréndeme") elige uno, muestra "Elegido para ti" y una razón.
 - **CA-08** "Pedir esta propuesta" lleva destino y viajeros al formulario (destino y mensaje precargados); "Limpiar búsqueda" elimina la propuesta.
 
-### Opiniones y créditos
+### Opiniones
 - **CA-09** Se muestran todas las opiniones; al elegir otra, pasa a ser la destacada (`aria-pressed`).
-- **CA-10** El footer ofrece el botón "Créditos de imágenes".
 
 ### Formulario de contacto
 - **CA-11** Al enviar vacío se muestran los errores de cada campo y el foco va al primer campo inválido.

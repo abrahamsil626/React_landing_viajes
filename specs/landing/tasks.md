@@ -10,7 +10,7 @@
 - [x] 7. `Proposal` y conexión con el formulario (CA-06, CA-07, CA-08)
 - [x] 8. `Advisor`, `HowItWorks`, `Testimonials` y `ClosingCta` (CA-09)
 - [x] 9. `ContactForm` con validación, carga y confirmación (CA-11, CA-12, CA-13)
-- [x] 10. `Footer` y `CreditsDialog` (CA-10)
+- [x] 10. `Footer`
 - [x] 11. Rediseño con `DESIGN.md` de Airbnb: tokens, componentes y animaciones (RF-11, UX-01 a UX-07)
 - [x] 12. Pruebas de integración del flujo completo (`App.test.jsx`)
 - [x] 13. Specs (`specs/landing/`) y diagramas (`docs/*.mmd`)

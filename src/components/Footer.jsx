@@ -1,11 +1,7 @@
-import { useState } from 'react';
 import { FOOTER_LINKS, SITE } from '../content/site';
-import CreditsDialog from './CreditsDialog';
 import './Footer.css';
 
 export default function Footer() {
-  const [creditsOpen, setCreditsOpen] = useState(false);
-
   return (
     <footer className="footer">
       <div className="container footer__grid">
@@ -44,13 +40,7 @@ export default function Footer() {
         <p>
           © {new Date().getFullYear()} {SITE.name}
         </p>
-        <button type="button" className="footer__credits-btn" onClick={() => setCreditsOpen(true)}>
-          Créditos de imágenes
-        </button>
       </div>
-
-
-      <CreditsDialog open={creditsOpen} onClose={() => setCreditsOpen(false)} />
     </footer>
   );
 }

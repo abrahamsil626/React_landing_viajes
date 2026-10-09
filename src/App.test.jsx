@@ -103,13 +103,6 @@ describe('Testimonios', () => {
   });
 });
 
-describe('Créditos', () => {
-  it('CA-10 el pie ofrece un enlace discreto a los créditos de imágenes', () => {
-    render(<App />);
-    expect(screen.getByRole('button', { name: 'Créditos de imágenes' })).toBeInTheDocument();
-  });
-});
-
 describe('Formulario de contacto', () => {
   const submit = (user) => user.click(screen.getByRole('button', { name: /enviar consulta/i }));
 
